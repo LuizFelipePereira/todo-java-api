@@ -25,12 +25,11 @@ public class TaskService {
     }
 
     @GET
-    @Path("taskID")
+    @Path("{taskId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTaskById(@PathParam("taskID") Long taskID)
-    {
+    public Response getTaskById(@PathParam("taskId") Long taskId) {
         ArrayList<Task> tasks = taskDAO.list();
-        Task task = tasks.get(tasks.size() -1);
+        Task task = tasks.get(tasks.size() - 1);
         return Response
                 .ok()
                 .entity(task)
